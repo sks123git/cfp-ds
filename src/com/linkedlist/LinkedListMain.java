@@ -47,7 +47,7 @@ public class LinkedListMain {
             return;
         }
         while (temp!=null){
-            System.out.print(temp.toString());
+            System.out.print(temp);
             temp=temp.getNext();
         }
     }
