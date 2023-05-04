@@ -1,5 +1,4 @@
 package com.linkedlist;
-
 public class LinkedListMain {
 
     Node head = null;
@@ -15,6 +14,37 @@ public class LinkedListMain {
             Node temp = head;
             head=newNode;
             newNode.setNext(temp);
+        }
+    }
+
+    public void insertBetween(int newdata, int after){
+        Node newNode = new Node();
+        newNode.setData(newdata);
+        if (head == null){
+            head = newNode;
+            tail = newNode;
+        } else {
+            Node temp = head;
+            Node temp2 = null;
+            int flag =0;
+            while (temp.getNext()!=null) {
+                if (temp.getNext().getData() == after && temp.getNext().getNext() == null) {
+                    temp.getNext().setNext(newNode);
+                    tail = newNode;
+                    flag = 1;
+                    return;
+                } else if (temp.getData() == after){
+                    temp2 = temp.getNext();
+                    temp.setNext(newNode);
+                    newNode.setNext(temp2);
+                    flag = 1;
+                    break;
+                }
+                temp = temp.getNext();
+            }
+            if (flag!=1){
+                System.out.println("After point value doesn't exist");
+            }
         }
     }
     public void append(int data){
